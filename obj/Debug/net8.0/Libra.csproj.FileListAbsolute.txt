@@ -400,3 +400,4 @@ C:\С#\Libra\obj\Debug\net8.0\refint\Libra.dll
 C:\С#\Libra\obj\Debug\net8.0\Libra.pdb
 C:\С#\Libra\obj\Debug\net8.0\Libra.genruntimeconfig.cache
 C:\С#\Libra\obj\Debug\net8.0\ref\Libra.dll
+C:\С#\Libra\obj\Debug\net8.0\Libra.sourcelink.json

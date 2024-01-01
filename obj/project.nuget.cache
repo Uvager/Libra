@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6WBSaam5Jlgjj+iIp63hnmSwF67RSN23BuinVwZBgeRMkjXbjzHs4pLBEOa/9WEfYedIkNPg9UGtIsp4FxzTyQ==",
+  "dgSpecHash": "KPFdbddrPzOBMrexEgvem0qPcEPYOtgg+m9Ms7rbXXDIuDKHtah7rks4p+cWBROxtrQYf2BjMcY0B9JzmQ4a/Q==",
   "success": true,
   "projectFilePath": "C:\\С#\\Libra\\Libra.csproj",
   "expectedPackageFiles": [
@@ -15,7 +15,7 @@
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.6.0\\microsoft.testplatform.objectmodel.17.6.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.testplatform.testhost\\17.6.0\\microsoft.testplatform.testhost.17.6.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\nuget.frameworks\\5.11.0\\nuget.frameworks.5.11.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\nunit\\3.13.3\\nunit.3.13.3.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\nunit.analyzers\\3.6.1\\nunit.analyzers.3.6.1.nupkg.sha512",
