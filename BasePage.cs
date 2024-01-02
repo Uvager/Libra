@@ -18,7 +18,7 @@ public class BasePage
     {
         Page = page;
     }
-    //Метод перехода на сайт с выбором московского региона
+    //Метод перехода на сайт
     public async ValueTask GoUrl()
     {
         await WaitingLoad();

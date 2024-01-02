@@ -1,9 +1,13 @@
 using Microsoft.Playwright;
 using PlaywrightTests;
 
+//класс методов главной страницы 
 public class FirstPage : BasePage
 {  
     public FirstPage(IPage page): base(page){}
+    /// <summary>
+    /// Метод перехода с главной страницы на страницу 'Книги' с выбором новинок
+    /// </summary>
     public async ValueTask GoToAllBooksPage()
     {
         await WaitingLoad();

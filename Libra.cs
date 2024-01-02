@@ -17,7 +17,6 @@ public class Tests : BaseTest
         AllBooksPage allbooks = new AllBooksPage(Page);
         await firstpage.GoToAllBooksPage();
         int count_page_books = await allbooks.Count();
-
         for (int page = 1; page < 10; page++)
         {
             NUnit.Framework.TestContext.Progress.WriteLine($"Проверка {page} страницы");
@@ -28,12 +27,8 @@ public class Tests : BaseTest
                 NUnit.Framework.TestContext.Progress.WriteLine($"Название книги - {book_name}");
                 string book_autor = await allbooks.GetBookAutor(i);
                 NUnit.Framework.TestContext.Progress.WriteLine($"Имя автора книги - {book_autor}"); 
-            }
-            
+            }           
             await Page.Locator(Locators.Allbookspage.page.Replace("$",Convert.ToString(page + 1))).ClickAsync();
-        }
-
-        
-        
+        }             
     }
     }
