@@ -33,5 +33,10 @@ public class AllBooksPage : BasePage
         await WaitingLoad();
         return await Page.Locator(Locators.Allbookspage.books).CountAsync();
     }
+    
+    public void BookCheck()
+    {
+
+    }
 
 }
