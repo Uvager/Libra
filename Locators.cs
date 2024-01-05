@@ -4,7 +4,9 @@ public static class Locators
     //класс локаторов станицы отдельной книги
     public static class Bookpage
     {
-
+        //локатор кнопки сказивания (для избежания конфликтов использовать Nth(1))
+        public const string bookdownload = "//a[@class = 'btn']";
+        public const string returntomain = "";
     }
     //класс локаторов главной страницы
     public static class Firstpage

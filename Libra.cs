@@ -19,82 +19,39 @@ public class Tests : BaseTest
     public async Task GetInfo()
     {
         NUnit.Framework.TestContext.Progress.WriteLine("Начало работы программы");
+        //подключение классов
         FirstPage firstpage = new FirstPage(Page);
         AllBooksPage allbooks = new AllBooksPage(Page);
+        JsonActions jsonaction = new JsonActions();
+        BookPage book = new BookPage(Page);
         //Переход на страницу всех книг
         await firstpage.GoToAllBooksPage();
-        //Запуск цикла проверки книг
-        
-
-
-
-
+        //Получение количества книг
         int count_page_books = await allbooks.Count();
+        //Запуск цикла по книгам и страницам
         for (int page = 1; page < 10; page++)
         {
             NUnit.Framework.TestContext.Progress.WriteLine($"Проверка {page} страницы");
             for (int i = 0; i < count_page_books; i++)
             {
                 //получение названия и автора книги
-                NUnit.Framework.TestContext.Progress.WriteLine($"Проверка {i + 1} книги");
-                string book_name = await allbooks.GetBookName(i);
-                int book_index = i;
-                NUnit.Framework.TestContext.Progress.WriteLine($"Индекс книги - {book_index}");
-                NUnit.Framework.TestContext.Progress.WriteLine($"Название книги - {book_name}");
-                string book_autor = await allbooks.GetBookAutor(i);
-                NUnit.Framework.TestContext.Progress.WriteLine($"Имя автора книги - {book_autor}");
-                
-                //путь к БД
-                string path = @"..\\..\\..\\Libra_Data.json";
-
-                List<BookAll> jsonRead = new();
-                using (StreamReader sr = new StreamReader(path, true))
-                {
-                    var jsonReadNew = JsonConvert.DeserializeObject<List<BookAll>>(File.ReadAllText(path));
-                    NUnit.Framework.TestContext.Progress.WriteLine($"Форматировали json (DeserializeObject) {jsonReadNew}");
-                    if(jsonReadNew != null)
-                    {
-                        NUnit.Framework.TestContext.Progress.WriteLine($"Json не пуст");
-                        jsonRead = jsonReadNew;
-                        jsonRead.Add(new()
-                        {
-                            Book_id =i,
-                            bookInfo = new()
-                            {
-                                Book_name = book_name,
-                                Book_autor = book_autor
-                            }
-                        });
-                    }
-                    else
-                    {
-                        NUnit.Framework.TestContext.Progress.WriteLine($"Json пусть");
-                        jsonRead = new()
-                        {
-                            new()
-                            {
-                                Book_id = i,
-                                bookInfo = new()
-                                {
-                                    Book_name = book_name,
-                                    Book_autor = book_autor
-                                }
-                            }
-
-                        };
-                    } 
-                }                
-                // string jsonoutput = JsonConvert.SerializeObject(jsonRead);
-                // NUnit.Framework.TestContext.Progress.WriteLine($"Сформировали запись json - {jsonoutput}");
-                using (StreamWriter file = File.CreateText(path))
-                {
-                    JsonSerializer serializer = new JsonSerializer();
-                    //serialize object directly into file stream
-                    serializer.Serialize(file, jsonRead);
-                    NUnit.Framework.TestContext.Progress.WriteLine($"Записали json");
-                }
-            }           
+                string book_name, book_autor;
+                (book_name, book_autor) = await allbooks.GetBookInfo(i);
+                //Получение всех книг из БД
+                List<BookAll> allBoks = jsonaction.ReturnJsonBooksAll();
+                if(!await allbooks.BookChek(allBoks, book_name, book_autor))
+                    continue;
+                //Обновление счетчика книг
+                count_book +=1;
+                //Скачиваем книгу
+                string pathDownloadFile = await book.BookDownload(i);
+                //Добавление новой книги в список
+                allBoks = jsonaction.AddNewElement(allBoks, count_book, book_name, book_autor, pathDownloadFile);
+                //Записываем в БД
+                jsonaction.JsonRead(allBoks);                         
+            }
+            //Переход на новую страницу           
             await Page.Locator(Locators.Allbookspage.page.Replace("$",Convert.ToString(page + 1))).ClickAsync();
-        }             
+        }           
     }
-    }
+}

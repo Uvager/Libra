@@ -1,7 +1,7 @@
 //класс данных книги
 public class BookAll
 {
-        public int? Book_id { get; set; }
+        public int Book_id { get; set; }
         public BookInfo? bookInfo {get; set;}
 }
 

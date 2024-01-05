@@ -42,7 +42,7 @@ public class BasePage
         await Page.WaitForLoadStateAsync(LoadState.Load);
         await Page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
     }
-    //Очистка allure результатов 
+        //Очистка allure результатов 
         public static bool AllureFilesClean(string path)
         {
             try

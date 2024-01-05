@@ -15,11 +15,16 @@ namespace PlaywrightTests;
 [FixtureLifeCycle(LifeCycle.InstancePerTestCase)]
 public class BaseTest : PageTest
 {
+    //Индекс последней скачанной книги
+    public static int count_book = 0;
+    
     [OneTimeSetUp]
     public static void OneTimeSetUp()
     {
-        
-
+        //Подключение класса работы с json
+        JsonActions ja = new JsonActions();
+        //Возвращение последнего индекса
+        count_book = ja.ReturnLastIndexSaveBooks();
     }
 
     [OneTimeTearDown]
