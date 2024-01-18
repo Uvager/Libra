@@ -5,7 +5,7 @@ using System.IO;
 public class JsonActions 
 {
     //Расположение БД
-    string path = @"..\\..\\..\\Libra_Data.json";
+    public string path = @"..\\..\\..\\Libra_Data.json";
     /// <summary>
     /// Метод возвращения индекса последней скачанной книги
     /// </summary>
@@ -88,13 +88,11 @@ public class JsonActions
     /// <param name="jsonRead"></param>
     public void JsonRead(List<BookAll> jsonRead)
     {
-        
          using (StreamWriter file = File.CreateText(path))
         {
             JsonSerializer serializer = new JsonSerializer();
             serializer.Serialize(file, jsonRead);
             NUnit.Framework.TestContext.Progress.WriteLine($"Записали json");
         }
-
     }
 }

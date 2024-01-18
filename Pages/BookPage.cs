@@ -22,8 +22,6 @@ public class BookPage : BasePage
         await Page.GoBackAsync();
         await Page.GoBackAsync();
         NUnit.Framework.TestContext.Progress.WriteLine("Возврат совершен");
-
         return download.SuggestedFilename;
-
     }
 }
