@@ -18,7 +18,7 @@ public class BasePage
     {
         Page = page;
     }
-    //Метод перехода на сайт с выбором московского региона
+    //Метод перехода на сайт
     public async ValueTask GoUrl()
     {
         await WaitingLoad();
@@ -42,7 +42,7 @@ public class BasePage
         await Page.WaitForLoadStateAsync(LoadState.Load);
         await Page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
     }
-    //Очистка allure результатов 
+        //Очистка allure результатов 
         public static bool AllureFilesClean(string path)
         {
             try
